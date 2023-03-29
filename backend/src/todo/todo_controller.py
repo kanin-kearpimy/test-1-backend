@@ -39,7 +39,7 @@ def todo_controller(**kwargs):
         elif("isComplete" in body):
             Todo.objects.filter(id=params['id']).update(isComplete=body['isComplete'])
         else:
-            return JsonResponse(status=500, data={"message": "No necessary parameters: id, isComplete"})
+            return JsonResponse(status=500, data={"message": "No necessary parameters: title or isComplete"})
         todo = Todo.objects.filter(id=params['id']).values()
         return JsonResponse(status=202, data=list(todo), safe=False)
     
